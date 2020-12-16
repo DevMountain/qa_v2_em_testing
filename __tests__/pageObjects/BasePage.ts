@@ -8,7 +8,7 @@ import {
 } from "selenium-webdriver";
 const fs = require("fs");
 const chromedriver = require("chromedriver");
-const geckodriver = require("geckodriver");
+// const geckodriver = require("geckodriver");
 
 /** Optional parameters for the page object */
 interface Options {
@@ -34,11 +34,11 @@ export class BasePage {
     if (
       options &&
       options.browser &&
-      options.browser == "firefox" &&
+      options.browser == "chrome" &&
       options.driver == undefined
     )
       this.driver = new Builder()
-        .withCapabilities(Capabilities.firefox())
+        .withCapabilities(Capabilities.chrome())
         .build();
     else
       this.driver = new Builder()
@@ -108,16 +108,15 @@ export class BasePage {
     return element.getAttribute(attribute);
   }
   /**
-   * Will take a screenshot and save it to the filepath/filename provided.
-   * Automatically saves as a .png file.
-   * @param {string} filepath - the filepath relative to the project's base folder where you want the screenshot saved
+   * 
+   * 
+   * @param {string} filepath - 
    * @example
-   * page.takeScreenshot("myFolder/mypic")
-   * //picture saves in "myFolder" as "mypic.png"
+   * 
    */
   async takeScreenshot(filepath: string) {
     fs.writeFile(
-      `${filepath}.png`,
+      `${__dirname}/screenshots/${filepath}.png`,
       await this.driver.takeScreenshot(),
       "base64",
       (e) => {
