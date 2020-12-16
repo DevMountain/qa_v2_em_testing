@@ -1,0 +1,10 @@
+Question: Are these tests stable/will they give us false positives?
+Answer: I believe that these tests are stable and have a low posibility of giving false positives.
+
+Question: Do these tests miss bugs you could find manually following the same processes?
+Answer: Yes. These tests do not cover 100% of the functionality, and they do not take into account the user experience,
+so it is likely that any automated test can miss bugs.
+
+Question: What would you change about the testing if you were given enough time?
+Answer: I would add in testing for more of the "features" or flow of the app, and I would also add in tests which 
+should cause errors and ensure that the application is handling them appropriately.
