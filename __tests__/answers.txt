@@ -1,0 +1,14 @@
+Are these tests stable/will they give us false positives?
+
+   These test are not stable enough. They need to be defined in more detail to prevent false positives from occuring. 
+
+
+Do these tests miss bugs you could find manually following the same processes?
+     Yes. While doing manual testing you can see if the user experience is acceptable. Specifically, with the navigation to 
+add new employee you have to go to the bottom of the page which is an odd experience. As well as when you first enter the site 
+there is an empty card with verbiage of "No Employee Selected."  This would all be missed by automation. 
+
+
+What would you change about the testing if you were given enough time?
+   I would write more specific tests for each of the functionality. Make sure they are detailed enough to prevent false positives. 
+   
