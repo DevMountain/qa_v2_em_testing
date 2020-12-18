@@ -105,6 +105,7 @@ describe("employee manager v2", () => {
       //   title: "test person",
       // };
       await page.addEmployee(newEmployee);
+      //take screenshot after add new employee
       await page.takeScreenshot(`screenShot/${newEmployee.name}`);
       let employ = await page.getCurrentEmployee();
       expect(employ.name).toEqual(newEmployee.name);
