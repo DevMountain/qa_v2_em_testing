@@ -85,6 +85,18 @@ describe("employee manager v2", () => {
     await page.takeScreenshot("screenShot/screenshotSearch");
   })
 
+  test("Seach employee 'Justin Nguyen and then delete it, then take screenshot'", async()=>{
+    await page.searchFor("Justin");
+    await page.selectEmployee("Justin Nguyen");
+    await page.deleteEmployee("Justin Nguyen");
+    await page.takeScreenshot("screenShot/Delete Justin");
+    let employeeList = await page.getEmployeeList();
+    expect(employeeList).not.toContain("Justin Nguyen");
+
+  })
+
+  
+
 
   test("Searching narrows the list", async () => {
     let originalList = await page.getEmployeeList();
@@ -94,7 +106,7 @@ describe("employee manager v2", () => {
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
     
   });
-
+  //
   //loop through each employee in record.
   employees.forEach((newEmployee)=>{
     test("Can add and delete an employee", async () => {
@@ -105,6 +117,7 @@ describe("employee manager v2", () => {
       //   title: "test person",
       // };
       await page.addEmployee(newEmployee);
+      //take screenshot after add new employee
       await page.takeScreenshot(`screenShot/${newEmployee.name}`);
       let employ = await page.getCurrentEmployee();
       expect(employ.name).toEqual(newEmployee.name);
