@@ -1,0 +1,12 @@
+ 1. Are these test stable/will they give us false positives?
+    It depends, the automation test is stable if we write a good function 
+    that can test the software that meet the requirement. So for this simple Employee Manager application 
+    I think the automation test is good for testing.  
+  2. Do these tests miss bugs you could find manually following the same processes?
+    If the functions of the automation tests are not good enough to cover all the requirements that we need
+    to pass it, it may will miss bugs and we need to manually testing. Also, we can not use automation for all the
+    test, sometimes we need to use manually testing fo test the software.
+  3. What would you change about the testing if you were given enough time?
+    I would create some more automation test for each requirements of the Employee Manager or maybe some acceptance testing.
+    Also create some more methods or function the test. 
+  
