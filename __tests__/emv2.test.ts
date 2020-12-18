@@ -85,6 +85,18 @@ describe("employee manager v2", () => {
     await page.takeScreenshot("screenShot/screenshotSearch");
   })
 
+  test("Seach employee 'Justin Nguyen and then delete it, then take screenshot'", async()=>{
+    await page.searchFor("Justin");
+    await page.selectEmployee("Justin Nguyen");
+    await page.deleteEmployee("Justin Nguyen");
+    await page.takeScreenshot("screenShot/Delete Justin");
+    let employeeList = await page.getEmployeeList();
+    expect(employeeList).not.toContain("Justin Nguyen");
+
+  })
+
+  
+
 
   test("Searching narrows the list", async () => {
     let originalList = await page.getEmployeeList();
