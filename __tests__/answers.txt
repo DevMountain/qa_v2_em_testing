@@ -1,0 +1,24 @@
+1. Are these tests stable/will they give us false positives?
+
+    The test that verified that a user could add, edit and delete new employees is dependent on 
+    the test data being unique. There is nothing in the test itselg that guarantees the test data does
+    not already exist in the database. 
+
+    This could be fixed. The test could first search for an employee matching the new data before adding the 
+    new employee. That way, we would know whether there was truly a bug in the delete function or whether there 
+    there was a duplicate employee already in the system.  
+
+
+2. Do these tests miss bugs you could find manually following the same processes?
+
+    Possibly. The first test does not cover a search that matches all the employee records in the system. This is 
+    an unlikely scenario, but if the list of employee records is small and the search very broad, the test 
+    would fail. 
+
+
+3. What would you change about the testing if you were given enough time?
+
+    Given enough time, I would add a method to the EmployeeManager Page Object. It would be helpful to have a 
+    method similar to the getEmployeeList() method, but that returned an array of the employees names as strings
+    rather than an array of web elements. This would allow for easier testing using the selectCEmployee function.
+
