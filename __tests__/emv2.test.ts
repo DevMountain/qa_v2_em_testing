@@ -1,31 +1,5 @@
 import { EmployeeManager, Employee } from "./pageObjects/EmployeeManager";
-
-const employees: Array<Employee> = [
-  {
-    name: "Han Solo",
-    phone: 1111111111,
-    email: "millenium@falcon.rep",
-    title: "Smuggler",
-  },
-  {
-    name: "Luke Skywalker",
-    phone: 2222222222,
-    email: "red5@rogue.rep",
-    title: "Jedi",
-  },
-  {
-    name: "Thrawn",
-    phone: 3333333333,
-    email: "gathrawn@admiralty.emp",
-    title: "Best Villain",
-  },
-  {
-    name: "R2-D2",
-    phone: 4444444444,
-    email: "pottymouth@astromech.rep",
-    title: "Crotchety Old Droid",
-  },
-];
+import * as testData from "./testData.json";
 
 describe("employee manager v2", () => {
   const page = new EmployeeManager({ browser: "chrome" });
@@ -37,25 +11,31 @@ describe("employee manager v2", () => {
   });
   test("Searching narrows the list", async () => {
     let originalList = await page.getEmployeeList();
-    await page.searchFor("Bill");
+    await page.searchFor("Screenshot");
     let resultList = await page.getEmployeeList();
+    // Take a screenshot of the search results and save it as a .png file.
+    let savePath = "./screenshot/shot";
+    page.takeScreenshot(savePath);
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
   });
   test("Can add and delete an employee", async () => {
-    let newEmployee = {
-      name: "Test Employee",
-      phone: 1234567890,
-      email: "test@email.com",
-      title: "test person",
-    };
+    // Create and add a new employee using data from .json file. 
+    for( let i = 0; i < testData.length; i++ ) {
+      let newEmployee = {
+        name: testData[i].name,
+        phone: testData[i].phone,
+        email: testData[i].email,
+        title: testData[i].title,
+      };
     await page.addEmployee(newEmployee);
     let employee = await page.getCurrentEmployee();
     expect(employee.name).toEqual(newEmployee.name);
     expect(employee.phone).toEqual(newEmployee.phone);
     expect(employee.email).toEqual(newEmployee.email);
     expect(employee.title).toEqual(newEmployee.title);
-    await page.deleteEmployee("Test Employee");
+    await page.deleteEmployee(testData[i].name);
     let employeeList = await page.getEmployeeList();
-    expect(employeeList).not.toContain("Test Employee");
+    expect(employeeList).not.toContain(testData[i].name);
+    };
   });
 });
