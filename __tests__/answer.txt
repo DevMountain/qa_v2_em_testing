@@ -1,0 +1,8 @@
+Are these tests stable/will they give us false positives?
+No these test are not stable. These tests can give false positives
+
+Do these tests miss bugs you could find manually following the same processes?
+Yes, there could be parameters in the input fields that are not found in the tests.
+
+What would you change about the testing if you were given enough time?
+I would account for things that could be missed by the tests.
