@@ -1,0 +1,46 @@
+/* 1.   The first test that is being run to create a screenshot, could
+        return a screenshot and therefore pass, without taking a screenshot
+        of the correct patient. I found this to be the case, as I was working
+        on writing my tests. With my original code, I was getting a screenshot
+        but it was not of my employee Princess Leia. Instead it was taking a screenshot
+        of the No Employee screen. This still passed because there was no expect line to 
+        determine what was in the screenshot. I am not sure of a way to text that at this
+        point without visually inspecting the screenshot. With some updates to the test, I
+        was able to visually inspect the screenshot to confirm that it was correct.
+
+        The second test "Searching narrows the list" could definitely 
+        return false positives due to the fact that the test is checking 
+        that the length of the original list is greater than or equal to
+        the length of the result list. If the search is not narrowed down,
+        the test would still pass, as the length of the two arrays would be
+        equal.
+
+        The third test "Can add and delete employees from JSON file" appears to be the most
+        stable and least likely to return a false positive. This test actually takes two values
+        and compares them expecting them to be equal and they are. Unlike the second test it
+        is strictly equal to, instead of comparing two numbers.
+
+    2. Based on my comments about the first and second tests, I think that there are bugs
+        that could be found manually. A visual inspection would find any bugs with invalid
+        screenshots. A manual test could also determine if the array lengths in the second 
+        test were equal to each other validly or because the search had not worked.
+
+    3. I'm not sure if it is possible, but I would love to find a way to verify that the
+        screenshot is only for the patient with "Screenshot" as the title. If I had more
+        time, I would also clean up some of my code by finding methods that might require
+        fewer lines. It looks like the solutions file does have fewer steps for each test,
+        but I wanted to make sure that my code was written based on my current knowledge and
+        understanding. If I had more time, I could have researched to get a better understanding
+        of some of the methods that were used in the pageObjects before trying to write my code.
+        However, I do like using for and if loops, and I was able to use those to get my tests
+        to pass. If I had more time I would have tried to add more to the "Search narrows results"
+        test. I tried writing a loop that would go through all the entries in the resultList array
+        and check that resultsList[i].name, resultsList[i].phone, resultsList[i].email, or 
+        resultsList[i].title contained "Bill" or the resultList.length == 0. I wanted to add this
+        extra test to ensure that the resultList entries did, in fact, only include employees
+        with "Bill" somewhere on their employee card.
+
+
+
+
+*/
