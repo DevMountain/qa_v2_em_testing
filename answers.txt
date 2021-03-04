@@ -1,0 +1,25 @@
+Are these tests stable/will they give us false positives?
+These tests are not very stable. For example:
+
+"Can add and delete an employee" test:
+- Fails if there is an employee with the name "New Employee" currently in the system
+
+These tests can are general enough that they could give us false positives and false negatives.
+For example:
+"Searching narrows the list" test:
+- All it checks for is that the length of the filtered list is less than the unfiltered list. This could fail if every employee matches the given search criteria.
+- The search could be performing completely incorrectly, as long as it reduces the size of the list, it will pass.
+
+Do these tests miss bugs you could find manually following the same processes?
+Yes, these tests could miss bugs that could be found manually. 
+These tests don't seem to take into account some edge cases that can occur. 
+For example, what happens if there are multiple employees with the same name, how would the search functionality work then and how would we test it?
+These tests also don't take into account what happens if symbols/special characters are inputted, would they be accepted and how do we test it?
+There is also not a test for what would happen if only spaces and nothing was inputted.
+All of these things could be quickly tested manually. 
+
+What would you change about the testing if you were given enough time?
+I would change the "Searching narrows the list" test by:
+-Making it so that any employee search result meets the search criteria. 
+-I would create a test to make sure that an employee who did not meet the search criteria would be removed from the search results. 
+
