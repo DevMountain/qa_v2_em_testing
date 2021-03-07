@@ -126,4 +126,26 @@ export class BasePage {
       }
     );
   }
+  //added this for practice doing something similar, but not the same
+  //added this method to be able to send text to a text file
+  /**
+   * Will get the text from a list of employees and save it to the filepath/filename provided.
+   * Automatically saves as a .txt file.
+   * @param {string} filepath - the filepath relative to the project's base folder where you want the text file saved
+   * @param {string} textStuff - the text of the provided list of employees
+   * @example
+   * page.sendTextFile("myFolder/myText")
+   * //picture saves in "myFolder" as "myText.txt"
+   */
+  async sendTextFile(filepath: string, textStuff: string) {
+    fs.writeFile(
+      `${filepath}.txt`,
+      `${textStuff}`,
+      'utf8',
+      (e) => {
+        if (e) console.log(e);
+        else console.log("text saved successfully");
+      }
+    )
+  };
 }
