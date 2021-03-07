@@ -1,0 +1,14 @@
+Are these tests stable/will they give us false positives? At first glance, I thought they were stable and didn't see any false positives. But I also am still a little confused on which parameters do what, and which variables you can use for values, and I don't even know if I'm describing what I'm talking about well enough to understand. I am starting to catch on a little bit better after the hours and hours of research I spent trying to fix the 2.08 assignment.
+
+Do these tests miss bugs you could find manually following the same processes?
+A quick look gave me these:
+1. the employee list should be dynamic in height so that it can fit your screen and give you a second scroll bar on the right.
+2. When I try to manually click on the + Add Employee, I get a window that says to finish updating the current employee, but I am not editing an employee, and cannot add one manually.
+3. The search doesn't search the ID.
+
+What would you change about the testing if you were given enough time?
+1. I might check to make sure that the search works for partial matches.
+2. I might check cancelling an edit.
+3. I might add extra searching to verify that the 4 fields are searchable.
+4. Search on duplicate names, phone, email, or title.
+That's about all I've got at the moment.
