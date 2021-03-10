@@ -34,11 +34,11 @@ export class BasePage {
     if (
       options &&
       options.browser &&
-      options.browser == "firefox" &&
+      options.browser == "chrome" &&
       options.driver == undefined
     )
       this.driver = new Builder()
-        .withCapabilities(Capabilities.firefox())
+        .withCapabilities(Capabilities.chrome())
         .build();
     else
       this.driver = new Builder()
@@ -117,11 +117,11 @@ export class BasePage {
    */
   async takeScreenshot(filepath: string) {
     fs.writeFile(
-      `${filepath}.png`,
+      `${__dirname}/screenshot.png`,
       await this.driver.takeScreenshot(),
       "base64",
       (e) => {
-        if (e) console.log(e);
+        if (e) console.error(e);
         else console.log("screenshot saved successfully");
       }
     );
