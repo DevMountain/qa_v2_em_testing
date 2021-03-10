@@ -117,11 +117,11 @@ export class BasePage {
    */
   async takeScreenshot(filepath: string) {
     fs.writeFile(
-      `${__dirname}./screenshot.png`,
+      `${__dirname}/screenshot.png`,
       await this.driver.takeScreenshot(),
       "base64",
       (e) => {
-        if (e) console.log(e);
+        if (e) console.error(e);
         else console.log("screenshot saved successfully");
       }
     );
