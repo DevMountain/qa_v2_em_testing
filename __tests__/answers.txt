@@ -1,0 +1,28 @@
+Q: Are these tests stable/will they give us false positives?
+
+- Test #2 will pass if the JSON file has an empty dataset in it ([]).
+Probably should check it's not an empty array before starting the test.
+
+- Test #1 still could pass if the search doesn't work. 
+It only checks that the total number of employees is not greater than the number of employees in the result list.
+A broken search function might not find any employee (show zero) or might not filter any (show all of them) and the test will still pass.
+
+Q: Do these tests miss bugs you could find manually following the same processes?
+
+- Test #2 does not check that the employee card after deletion should be cleared (no employee should be selected), the page still shows the card of deleted one.
+
+Q: What would you change about the testing if you were given enough time?
+
+- Tests #1 and #3 require some precondition for the tests to pass: 
+one employee whose name contains "Bill" and the other one whose name contains "Screenshot".
+I would start these tests by adding those employees.
+
+- Test #1 have this assertion: expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
+Instead, I would verify that in the result list every employee contains "Bill" in its data.
+I would make sure there're no such employees at first, then add some, then check the exact number is present in the result list.
+
+- I would also add another dataset for testing search since search works not only on names but on other fields.
+
+- I would separate adding employees and editing employees in two different methods.
+
+- Method addEmployee() doesn't check that after editing, the updated name shows up on a list, and employee card title shows updated name.
