@@ -33,15 +33,18 @@ export class EmployeeManager extends BasePage {
     this.url =
       "https://devmountain-qa.github.io/employee-manager-v2/build/index.html";
   }
+
   async navigate() {
     await this.driver.get(this.url);
     await this.driver.wait(
       until.elementIsEnabled(await this.getElement(this.searchBox))
     );
   }
+
   async searchFor(searchText: string) {
     await this.setInput(this.searchBox, searchText);
   }
+
   async getEmployeeList() {
     const employeeList: Array<string> = [];
     let list = await this.driver.findElements(this.listedEmployees);
@@ -50,6 +53,7 @@ export class EmployeeManager extends BasePage {
     }
     return list;
   }
+
   async selectEmployee(name: string) {
     await this.click(By.xpath(`//li[text()='${name}']`));
     await this.getElement(this.cardTitle);
@@ -57,6 +61,7 @@ export class EmployeeManager extends BasePage {
       until.elementTextContains(await this.getElement(this.cardTitle), name)
     );
   }
+
   async getCurrentEmployee() {
     let employee = { name: "", phone: 0, email: "", title: "", id: "" };
     employee.name = await this.getAttribute(this.nameEntry, "value");
@@ -69,6 +74,7 @@ export class EmployeeManager extends BasePage {
     employee.id = (await this.getText(this.idNumber)).slice(4);
     return employee;
   }
+
   async addEmployee(employee: Employee) {
     await this.click(this.addButton);
     //   await new Promise((res) => setTimeout(res, 500));
@@ -85,6 +91,7 @@ export class EmployeeManager extends BasePage {
     await this.setInput(this.titleEntry, employee.title);
     await this.click(this.saveButton);
   }
+
   async deleteEmployee(name: string) {
     await this.selectEmployee(name);
     let record = await this.driver.findElement(
@@ -95,5 +102,19 @@ export class EmployeeManager extends BasePage {
     let alert = await this.driver.switchTo().alert();
     await alert.accept();
     await this.driver.wait(until.stalenessOf(record));
+  }
+
+  async addAndDelete(person: Employee) {
+    await this.addEmployee(person);
+    //console.log(`added ${person.name}`)
+    let employee = await this.getCurrentEmployee();
+    expect(employee.name).toEqual(person.name);
+    expect(employee.phone).toEqual(person.phone);
+    expect(employee.email).toEqual(person.email);
+    expect(employee.title).toEqual(person.title);
+    await this.deleteEmployee(person.name);
+    //console.log(`deleted ${person.name}`)
+    let employeeList = await this.getEmployeeList();
+    expect(employeeList).not.toContain(`${person.name}`);
   }
 }
