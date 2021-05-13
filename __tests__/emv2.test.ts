@@ -21,24 +21,23 @@ describe("employee manager v2", () => {
     let resultList = await page.getEmployeeList();
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
   });
- 
+
   // Test #2 Add and delete using json dataset
   employees.forEach(person => {
     test("Can add and delete an employee", async () => {  
-      console.log(person) 
+      //console.log(person) 
       await page.addAndDelete(person);
     });
   })
 
-  /* Have yet to find out why this is not working
+  // have to use for instead of forEach, dealing with async
   test("Can add and delete an employee", async () => {
-    employees.forEach(async (person) => {
-      console.log(person)
+    for (const person of employees) {
+      //console.log(person)
       await page.addAndDelete(person);
-    })
-  });
-  */
-
+    }
+  })
+  
   // Test #3 Search for the employees with the title “Screenshot”, and save a screenshot of them
   test("Search for the employees and save a screenshot of them", async () => {
     await page.searchFor("Screenshot");
