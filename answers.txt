@@ -1,0 +1,18 @@
+1. Are these tests stable/will they give us false positives?
+For the adding and deleting employees test, I checked out the site because I was getting an error saying "Please finish updating your current new employee before adding another."
+I was looking for any error messages in the code, but couldn't find any. The app fails to add an employee if there is an existing new employee that hasn't been tended to.
+Since there is a default text for new employee, it may be beneficial to change addEmployee() only be the function for when adding a new employee and then having another 
+function editing the "New Employee" that needs to be edited. I do believe that the code is on the right track and that the jest code should work when tested if there was not already 
+a new employee entry on the site. However, this does lead me to believe that this test is not stable since there are other testers working on this too, I'm not sure how they could 
+have adjusted or changed the data in the site. 
+
+2. Do these tests miss bugs you could find manually following the same processes?
+I wouldn't say these tests miss bugs, but I do think that because due to the shared database, making a test for edit employee for example, can be easier to do manually.
+I had all tests passing when I added an edit employee test, but it didn't pass when I ran it again since "New Employee" was gone now. I could see the use for manual testing to be
+effective here since automation wasn't going as smoothly for me as expected.
+
+3. What would you change about the testing if you were given enough time?
+Preferably, it would be nicer to test with my own database but that doesn't seem like the case all the time at a company. The struggles of sharing the database were giving me a hard time 
+because I wanted my tests to pass since I felt like the code I had could give me that, but the errors were bothering me when i could have taken a step back and checked out the site earlier.
+I would also possibly change how some methods and functions worked because I felt like the some cases could be added for testing where once a new employee is added, the add employee button
+can be clicked so my other tests could be working. Again, this is more for personal satisfaction in having passing tests but I'm glad I experienced this now rather than the future.
