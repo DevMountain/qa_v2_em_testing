@@ -1,0 +1,32 @@
+•	Are these tests stable/will they give us false positives?
+
+I think these test are stable as we have a well organized test suite. We have base class which includes all the basic functionalities for 
+application and can be reused if needed. For example – initializing the browser, locators and screenshot function are included in the base class. 
+We have a separate .json file which includes the employee list and can be used for API testing as well. emv2.test.ts file is importing the data 
+from .json and Basepage.ts file with the test cases which are passing successfully.
+
+•	Do these tests miss bugs you could find manually following the same processes?
+Automation works same through out the process but human minds think differently so it is possible that a tester can find something manually 
+following the same process. That is why we say "testing is never enough". As and when we write more test manually, we can add them to automation. 
+
+•	What would you change about the testing if you were given enough time?
+1. I would like to automate my test as much as possible. It might look like a donting task in the beginning but it will help us a lot long term.
+2. I would like to spend more time on API testing to ensure that the basic functionality of my application is working properly and all critical 
+bugs are addressed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

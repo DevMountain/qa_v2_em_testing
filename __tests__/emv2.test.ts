@@ -1,31 +1,7 @@
 import { EmployeeManager, Employee } from "./pageObjects/EmployeeManager";
+import * as employees from "./employees.json";
 
-const employees: Array<Employee> = [
-  {
-    name: "Han Solo",
-    phone: 1111111111,
-    email: "millenium@falcon.rep",
-    title: "Smuggler",
-  },
-  {
-    name: "Luke Skywalker",
-    phone: 2222222222,
-    email: "red5@rogue.rep",
-    title: "Jedi",
-  },
-  {
-    name: "Thrawn",
-    phone: 3333333333,
-    email: "gathrawn@admiralty.emp",
-    title: "Best Villain",
-  },
-  {
-    name: "R2-D2",
-    phone: 4444444444,
-    email: "pottymouth@astromech.rep",
-    title: "Crotchety Old Droid",
-  },
-];
+
 
 describe("employee manager v2", () => {
   const page = new EmployeeManager({ browser: "chrome" });
@@ -41,12 +17,27 @@ describe("employee manager v2", () => {
     let resultList = await page.getEmployeeList();
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
   });
-  test("Can add and delete an employee", async () => {
+
+test("screenshot employees", async()=>{
+await page.searchFor("Bill");
+await page.takeScreenshot("Screenshot1")
+
+});
+
+test("screenshot employees", async()=>{
+  await page.selectEmployee("Darth Vadar");
+  await page.takeScreenshot("Screenshot4")
+});
+
+employees.forEach((newEmployee) => {
+
+  test(`Can add and delete an employee ${newEmployee.name})`, async () => {
     let newEmployee = {
       name: "Test Employee",
       phone: 1234567890,
       email: "test@email.com",
       title: "test person",
+    
     };
     await page.addEmployee(newEmployee);
     let employee = await page.getCurrentEmployee();
@@ -57,5 +48,7 @@ describe("employee manager v2", () => {
     await page.deleteEmployee("Test Employee");
     let employeeList = await page.getEmployeeList();
     expect(employeeList).not.toContain("Test Employee");
+  
   });
+});
 });
