@@ -1,0 +1,6 @@
+1. This tests are stable and they are positive testing the main functionality that app should be able to perform:
+- to add epmployee
+- delete epmployee
+- edit epmployee
+2. This test are missing checks for negative results
+Checks for error messages and each field validation
