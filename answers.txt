@@ -1,0 +1,17 @@
+Question 1 - Are these tests stable/will they give us false positives?
+
+Answer - Out of the few tests in this file, I think for the most part they are pretty stable. 
+The only test you might want to go into more detail on is the the "Searching narrows the list" 
+because if you search "Bill" and their is no Bill then ofcourse the results will be narrowed and 
+you could receive a false positive. 
+
+Question 2 - Do these tests miss bugs you could find manually following the same processes?
+
+Answer - With there only being a couple of tests here I don't necessarily think so. That being said, I 
+do think it's a good idea to run tests manually so you can experience what the user will experience.
+
+What would you change about the testing if you were given enough time?
+
+Answer - With the little experience I have, I wouldn't make too many changes. One thing I would change, 
+is the way we are testing if searching narrows the search results. Another thing I would change is move 
+the "newEmployee" out of the test page and into the base page. 
