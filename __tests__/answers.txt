@@ -1,0 +1,14 @@
+Consider the following questions:
+Are these tests stable/will they give us false positives?
+Do these tests miss bugs you could find manually following the same processes?
+What would you change about the testing if you were given enough time?
+
+
+After working on these tests, I believe they can give you a false positive. I had a hard time getting the screenshot function
+to save a screenshot and then getting it to save a screenshot in the correct place even though it passes the test after running it. 
+I think some of these tests could definitely miss bugs that we could find manually- definitely needs more tests for finding bugs.
+I would probably include a test that verifies the search function pulls up what you expect- right now with the screenshot function it 
+does include names in the search but if you don't already know who has that specific title you can't really verify it without 
+taking a screenshot and assuming that it did in fact find that term in an employee file- I would take it up with the devs to include a
+more detailed search result so it can be verified via automated testing- plus the comsumer using the app would most likely want a 
+more detailed search result. 
