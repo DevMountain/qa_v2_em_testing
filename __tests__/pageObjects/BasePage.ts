@@ -115,15 +115,15 @@ export class BasePage {
    * page.takeScreenshot("myFolder/mypic")
    * //picture saves in "myFolder" as "mypic.png"
    */
-  async takeScreenshot(filepath: string) {
+   async takeScreenshot(filepath: string) {
     fs.writeFile(
-      `${filepath}.png`,
+      `${__dirname}/../Screenshots/employee.png`,
       await this.driver.takeScreenshot(),
       "base64",
       (e) => {
-        if (e) console.log(e);
+        if(e) console.log(e);
         else console.log("screenshot saved successfully");
       }
-    );
+  )
+      }
   }
-}
