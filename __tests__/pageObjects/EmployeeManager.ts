@@ -28,6 +28,7 @@ export class EmployeeManager extends BasePage {
   saveButton: By = By.name("save");
   cancelButton: By = By.name("cancel");
   deleteButton: By = By.name("delete");
+  //tempTitle: By = By.className("titleText");
   constructor(options) {
     super(options);
     this.url =
