@@ -1,0 +1,1 @@
+The code is not documented with JSDoc. It's familiar but I still found it confusing. 
