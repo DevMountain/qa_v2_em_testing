@@ -1,0 +1,9 @@
+1.Are these tests stable/will they give us false positives?
+- I don't think that these test are the most stable. They may pass but could be misleading
+
+2.Do these tests miss bugs you could find manually following the same processes?
+-The original add and delete employee test only runs it one time. Adding more data could provide a better test on the feature.
+
+3.What would you change about the testing if you were given enough time?
+- I would change the way we test narrowing down the list. "Bill" was not a name on the list so it did narrow it down to 0 employees. 
+Maybe if we narrowed it down by Job Title it may provide a better result.
