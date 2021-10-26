@@ -1,5 +1,7 @@
 import { EmployeeManager, Employee } from "./pageObjects/EmployeeManager";
 import * as employeeData from "./dataSets/employeeData.json"
+import { findSafariDriver } from "selenium-webdriver/safari";
+import { Driver } from "selenium-webdriver/chrome";
 
 describe("employee manager v2", () => {
   const page = new EmployeeManager({ browser: "chrome" });
@@ -14,6 +16,11 @@ describe("employee manager v2", () => {
     await page.searchFor("Bill");
     let resultList = await page.getEmployeeList();
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
+  });
+  test("Screenshot", async () => {
+    await page.searchFor("Screenshot");
+    let d = new Date(Date.now());
+    await page.takeScreenshot(`${__dirname}/screenshots/` + d.toISOString());
   });
   test("Can add and delete an employee", async () => {
 
