@@ -71,9 +71,9 @@ export class EmployeeManager extends BasePage {
   }
   async addEmployee(employee: Employee) {
     await this.click(this.addButton);
-    //   await new Promise((res) => setTimeout(res, 500));
+    //   await new Promise((res) => setTimeout(res, 1000));
     //   await this.searchFor("New Employee");
-    //   await new Promise((res) => setTimeout(res, 500));
+    //   await new Promise((res) => setTimeout(res, 1000));
     await this.selectEmployee("New Employee");
     await this.driver.wait(until.elementLocated(this.cardTitle));
     await this.driver.wait(

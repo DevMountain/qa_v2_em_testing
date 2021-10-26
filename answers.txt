@@ -1,0 +1,9 @@
+Are these tests stable/will they give us false positives?
+Do these tests miss bugs you could find manually following the same processes?
+What would you change about the testing if you were given enough time?
+
+as for false positives i really dont know. the tests are missing things like saving. i dont see how any saves are happening.
+there is no test i see that is checking for errors or doing any data validation. are the required fields getting the proper number of characters?
+id like to see some field validation added. id like to see if data is saving when navigating away or not. are saves persistant?
+these tests failed. i could not get it to pass the adding and deleting employee. kept getting an error that it neds to complete adding the current employee before adding another
+this would certainly be able to complete succefully with a manual test.
