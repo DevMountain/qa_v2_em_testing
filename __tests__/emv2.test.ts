@@ -1,31 +1,5 @@
 import { EmployeeManager, Employee } from "./pageObjects/EmployeeManager";
-
-const employees: Array<Employee> = [
-  {
-    name: "Han Solo",
-    phone: 1111111111,
-    email: "millenium@falcon.rep",
-    title: "Smuggler",
-  },
-  {
-    name: "Luke Skywalker",
-    phone: 2222222222,
-    email: "red5@rogue.rep",
-    title: "Jedi",
-  },
-  {
-    name: "Thrawn",
-    phone: 3333333333,
-    email: "gathrawn@admiralty.emp",
-    title: "Best Villain",
-  },
-  {
-    name: "R2-D2",
-    phone: 4444444444,
-    email: "pottymouth@astromech.rep",
-    title: "Crotchety Old Droid",
-  },
-];
+import * as employeeData from "./dataSets/employeeData.json"
 
 describe("employee manager v2", () => {
   const page = new EmployeeManager({ browser: "chrome" });
@@ -42,20 +16,19 @@ describe("employee manager v2", () => {
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
   });
   test("Can add and delete an employee", async () => {
-    let newEmployee = {
-      name: "Test Employee",
-      phone: 1234567890,
-      email: "test@email.com",
-      title: "test person",
-    };
-    await page.addEmployee(newEmployee);
-    let employee = await page.getCurrentEmployee();
-    expect(employee.name).toEqual(newEmployee.name);
-    expect(employee.phone).toEqual(newEmployee.phone);
-    expect(employee.email).toEqual(newEmployee.email);
-    expect(employee.title).toEqual(newEmployee.title);
-    await page.deleteEmployee("Test Employee");
-    let employeeList = await page.getEmployeeList();
-    expect(employeeList).not.toContain("Test Employee");
+
+    for (let i=0; i<employeeData.length; i++){
+      await page.addEmployee(employeeData[i]);
+      let employee = await page.getCurrentEmployee();
+      expect(employee.name).toEqual(employeeData[i].name);
+      expect(employee.phone).toEqual(employeeData[i].phone);
+      expect(employee.email).toEqual(employeeData[i].email);
+      expect(employee.title).toEqual(employeeData[i].title);
+
+      await page.deleteEmployee(employeeData[i].name);
+      let employeeList = await page.getEmployeeList();
+      expect(employeeList).not.toContain(employeeData[i].name);
+    }
+
   });
 });
