@@ -1,0 +1,34 @@
+There are a number of issues with the current implementation which can 
+cause the tests to fail under certain conditions:
+
+1. Screenshots test
+
+If the screenshots folder does not exist, the current implementation fails to save the 
+file. An improvement to this would be to check if the folder exists, and if it does not, 
+create the folder before saving the file
+
+The current implementation also does not allow for multiple versions of the file to be saved.
+This has been improved by including the date and time of when the screenshot was taken. This could be
+improved further by including a function that formats the datetime into something like YYYYMMDD_hhmmss 
+
+2. No employees with "Screenshot" title
+
+If there are no employees with the "Screenshot" title, the screenshot test is not very useful. 
+It would be more useful to take screenshots before or after expect statements
+as evidence that the test passed or failed.
+
+3. New Employee has been created but not edited
+
+The application at the moment does not allow a new employee to be created if there is already a 
+New Employee record that has been created but not edited. 
+The existence of an unedited New Employeed record causes the "Can add and delete an employee" test to fail. 
+An improvement could be for the application to check if an unedited New Employee record has been 
+created before running the test, but would need further advice to determine 
+the correct next step i.e. deleting the record, editing the record, etc. because the application is being 
+shared with other testers and could result in lost data for other testers
+
+4. Search test 
+
+The current test for the search function only determines if the resultant list has less records than the 
+full list. It does not check that the search text is found in the resultant list. It does not confirm that 
+all records with the search text in any field is returned.
