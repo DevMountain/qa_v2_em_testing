@@ -1,0 +1,22 @@
+Are these tests stable/will they give us false positives?
+
+I do believe these tests are not stable. When I started this project, I knew I was 
+doing the screenshots test wrong, but when I ran the command it still gave me a checkmark
+that it had passed. It did send an error message since I did not create the screenshots
+folder yet. I could have easily missed that error message if I had only relied on the
+checkmark. 
+
+
+Do these tests miss bugs you could find manually following the same processes?
+
+I do believe these tests could sufficiently find bugs if they were not able to add a new employee or get 
+an error if one of the input fields were wrong. I could add an extra digit to one of the phone numbers, and
+see what would happen. I think for me personally I like to see every detail of the test like I can 
+with manual tests. I get a bit nervous with automation becuase I have to fully trust that it is working. 
+
+What would you change about the testing if you were given enough time?
+
+If I had more time, I would change the order of the tests. I would add add and delete an new employee 
+before the Screenshots test. I would also add to the automation to click on the employee card and take able
+screenshot of a newly added employee. I think that order would make more sense to see if adding an employee
+works. 
