@@ -1,0 +1,26 @@
+[
+ {
+  "name": "Kim Kardashian",
+  "phone": 1111111111,
+  "email": "kimk@skims.com",
+  "title": "CEO"
+ },
+ {
+  "name": "Khole Kardashian",
+  "phone": 2222222222,
+  "email": "khloeK@goodAmerican.com",
+  "title": "CEO and Founder"
+ },
+ {
+  "name": "Kourtney Kardashian",
+  "phone": 3333333333,
+  "email": "kourtk@poosh.com",
+  "title": "CEO"
+ },
+ {
+  "name": "Kris Kardashian",
+  "phone": 4444444444,
+  "email": "richmom@management.com",
+  "title": "Momager"
+ }
+]

@@ -1,0 +1,20 @@
+Look over the tests that are already there.
+Consider the following questions:
+Are these tests stable/will they give us false positives?
+
+I believe our "searching narrows the list text" could give us a false positive because
+of the "greater than or equal to" line when comparing the original list length and the search
+list length. Theoretically, if the search function wasn't filtering the list accurately, 
+this test could still pass. If the results page pulled every person from the original list
+this would still pass with automation. This bug would probably not be missed if we were 
+running the same test manually because instead of cross comparing the list lengths, we woud be 
+reading what results pulled up or didn't pull up after we searched. 
+
+Our "can add and delete employee" test is giving us a false positive as well. The automation
+is being executed, but in our function we don't include pressing okay on the pop up window 
+that comes up after delete is clicked. Therefore, the test passes but the employee is not 
+actually deleted. 
+
+If given the time I would investigate more on how these tests could be improved our fixed. I had 
+a few intial ideas for fixes, but after adding them to the code I realized they did not take care 
+of the issues. 
