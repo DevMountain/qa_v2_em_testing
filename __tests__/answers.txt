@@ -1,0 +1,7 @@
+The screenshot test will pass reguardless of the results of the test. I had to mess with the pass several time before it saved in the right location even though the test was passing
+
+There was some leftover data in the app for New Employee which caused issues with the new/delete test until it was removed.
+
+Add employee and delete employee should be seperate tests since it is two different functionalities
+I would also add validation to the screenshot test to check that the file has been created and is not empty.
+That would make subsecent tests autopass so there would also need to have a cleanup before or after the test
