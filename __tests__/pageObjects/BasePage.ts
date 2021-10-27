@@ -34,11 +34,11 @@ export class BasePage {
     if (
       options &&
       options.browser &&
-      options.browser == "firefox" &&
+      options.browser == "chrome" &&
       options.driver == undefined
     )
       this.driver = new Builder()
-        .withCapabilities(Capabilities.firefox())
+        .withCapabilities(Capabilities.chrome())
         .build();
     else
       this.driver = new Builder()

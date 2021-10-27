@@ -1,31 +1,6 @@
 import { EmployeeManager, Employee } from "./pageObjects/EmployeeManager";
 
-const employees: Array<Employee> = [
-  {
-    name: "Han Solo",
-    phone: 1111111111,
-    email: "millenium@falcon.rep",
-    title: "Smuggler",
-  },
-  {
-    name: "Luke Skywalker",
-    phone: 2222222222,
-    email: "red5@rogue.rep",
-    title: "Jedi",
-  },
-  {
-    name: "Thrawn",
-    phone: 3333333333,
-    email: "gathrawn@admiralty.emp",
-    title: "Best Villain",
-  },
-  {
-    name: "R2-D2",
-    phone: 4444444444,
-    email: "pottymouth@astromech.rep",
-    title: "Crotchety Old Droid",
-  },
-];
+import * as employees from "./data/employees.json";
 
 describe("employee manager v2", () => {
   const page = new EmployeeManager({ browser: "chrome" });
@@ -41,21 +16,35 @@ describe("employee manager v2", () => {
     let resultList = await page.getEmployeeList();
     expect(originalList.length).toBeGreaterThanOrEqual(resultList.length);
   });
-  test("Can add and delete an employee", async () => {
-    let newEmployee = {
-      name: "Test Employee",
-      phone: 1234567890,
-      email: "test@email.com",
-      title: "test person",
-    };
-    await page.addEmployee(newEmployee);
-    let employee = await page.getCurrentEmployee();
-    expect(employee.name).toEqual(newEmployee.name);
-    expect(employee.phone).toEqual(newEmployee.phone);
-    expect(employee.email).toEqual(newEmployee.email);
-    expect(employee.title).toEqual(newEmployee.title);
-    await page.deleteEmployee("Test Employee");
-    let employeeList = await page.getEmployeeList();
-    expect(employeeList).not.toContain("Test Employee");
+  //Adding a test for it to do a screenshot. Could not find the list of employees.
+  //Assuming system would know that list when searching for it 
+  test("Taking Screenshot", async () => {
+    await page.searchFor ("Screenshot");
+    //I created a Screenshots folder manually then put a file path below 
+    //./__tests__/Screenshots/Screenshot
+    await page.takeScreenshot("./__tests__/Screenshots/Screenshot")
+    await page.searchFor ("Bill");
+    await page.takeScreenshot ("./__tests__/Screenshots/Screenshot2")
+    await page.searchFor("Harry Potter");
+    await page.takeScreenshot ("./__tests__/Screenshots/Screenshot3")
+
   });
-});
+//new parameter to loop in the json file with new employees
+    employees.forEach ((newEmployee) => {  
+      test("Can add and delete an employee (newEmployee.name)", async () => { 
+        await page.addEmployee(newEmployee);
+        let employee = await page.getCurrentEmployee();
+        expect(employee.name).toEqual(newEmployee.name);
+        expect(employee.phone).toEqual(newEmployee.phone);
+        expect(employee.email).toEqual(newEmployee.email);
+        expect(employee.title).toEqual(newEmployee.title);
+        //Changing "Test Employee" to newEmployee.name
+        await page.deleteEmployee(newEmployee.name);
+        let employeeList = await page.getEmployeeList();
+        expect(employeeList).not.toContain(newEmployee.name);
+      });
+    
+    });
+    
+  });
+

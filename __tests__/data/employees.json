@@ -1,0 +1,44 @@
+[
+    {
+      "name": "Han Solo",
+      "phone": 1111111111,
+      "email": "millenium@falcon.rep",
+      "title": "Smuggler"
+    },
+    {
+      "name": "Luke Skywalker",
+      "phone": 2222222222,
+      "email": "red5@rogue.rep",
+      "title": "Jedi"
+    },
+    {
+      "name": "Thrawn",
+      "phone": 3333333333,
+      "email": "gathrawn@admiralty.emp",
+      "title": "Best Villain"
+    },
+    {
+      "name": "R2-D2",
+      "phone": 4444444444,
+      "email": "pottymouth@astromech.rep",
+      "title": "Crotchety Old Droid"
+    },
+    {
+        "name": "Hermione Granger",
+        "phone": 5555555555,
+        "email": "hermione.granger@hogwarts.edu",
+        "title": "Student"  
+    },
+    {
+        "name": "Draco Malfoy",
+      "phone": 6666666666,
+      "email": "draco.malfoy@slytherin.edu",
+      "title": "Death Eater"
+    },
+    {
+        "name": "Luna Lovegood",
+      "phone": 7777777777,
+      "email": "luna.lovegood@hogwarts.edu",
+      "title": "Dumbledore's Army Lieutenant"
+    }
+  ]
